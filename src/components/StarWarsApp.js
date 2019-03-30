@@ -12,16 +12,22 @@ class  StarWarsApp extends React.Component {
     }
 
     async componentDidMount() {
+
         this.setState({
             searchLoading: true
         });
 
-        const planets  = await searchPlanets('a');
+        try {
+            const planets  = await searchPlanets('a');
 
-        this.setState({
-            searchLoading: false,
-            planets
-        });
+            this.setState({
+                searchLoading: false,
+                planets
+            });
+        } catch (error) {
+            console.warn(error);
+        }
+
     }
 
     render() {

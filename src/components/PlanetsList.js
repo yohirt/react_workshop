@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from './Loader';
 import isEmpty from 'lodash/isEmpty';
+import PlanetListItem from './PlanetsListItem';
 
 export default function PlanetList(props) {
     return (
         <React.Fragment>
-            <Loader isLoading={props.searchLoading}/>
-            {!isEmpty(props.planets) && props.planets.map(planet => <p key={planet.name}>{planet.name}</p>)}
+            <Loader isLoading={props.isLoading}/>
+            <ol className="w-75">
+                {!isEmpty(props.planets) && props.planets.map(planet => <PlanetListItem planet={planet}/>)}
+            </ol>
         </React.Fragment>
     )
 }
