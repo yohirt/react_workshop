@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const title = 'My Minimal React Webpack Babel Setup';
+const title = <h1 className="d-flex justify-content-center">Dremlab ReactJS Workshop</h1>;
 
 ReactDOM.render(
-  <div>{title}</div>,
+  title,
   document.getElementById('app')
 );
 
