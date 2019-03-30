@@ -12,12 +12,12 @@ export default async function searchPlanets(query) {
 
     // with use of axios fetch data from SWAPI
     const result = await axios.get(`https://swapi.co/api/planets/?search=${query}`);
-    //  get only what is needed from retrieved data
+    //  return only what is needed from retrieved data
     return transformPlanets(result.data.results);
 }
 
 /**
- *Transform array of planets and returns array with only some data about each planet
+ *Transform array of planets and returns array with some data about each planet
  * @param {array} data array of planets
  */
 function transformPlanets(data) {
