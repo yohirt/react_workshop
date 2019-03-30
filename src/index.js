@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const title = <h1 className="d-flex justify-content-center">Dremlab ReactJS Workshop</h1>;
+function  Title () {
+  return <div className="d-flex flex-column align-items-center">
+      <h1>Star Wars Planets</h1>
+      <div className="spinner-border text-primary"></div>
+  </div>
+};
 
 ReactDOM.render(
-  title,
+  <Title/>,
   document.getElementById('app')
 );
 
