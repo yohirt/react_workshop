@@ -1,5 +1,6 @@
 import React from 'react';
 import Loader from './Loader';
+import isEmpty from 'lodash/isEmpty';
 import searchPlanets from '../providers/SWAPIFetcher';
 
 class  StarWarsApp extends React.Component {
@@ -28,9 +29,7 @@ class  StarWarsApp extends React.Component {
         return <div className="d-flex flex-column align-items-center">
             <h1>Star Wars Planets</h1>
             <Loader isLoading={this.state.searchLoading}/>
-            <p>
-                {this.state.planets.length && this.state.planets[0].name}
-            </p>
+            {!isEmpty(this.state.planets) && this.state.planets.map(planet => <p>{planet.name}</p>)}
         </div>
     };
 }
