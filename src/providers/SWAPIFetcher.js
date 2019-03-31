@@ -24,7 +24,7 @@ function transformPlanets(data) {
     return data.map(({ name, climate, population, gravity, orbital_period, rotation_period }) => ({
         name,
         climate,
-        population: parseInt(population),
+        population: parseInt(population) || population,
         gravity,
         orbitalPeriod: parseInt(orbital_period),
         rotationPeriod: parseInt(rotation_period)

@@ -1,4 +1,6 @@
 import React from 'react';
+
+import debounce from 'lodash/debounce';
 import searchPlanets from '../providers/SWAPIFetcher';
 import PlanetsList from './PlanetsList';
 import Search from './Search';
@@ -12,6 +14,7 @@ class  StarWarsApp extends React.Component {
             planets: []
         }
         this.handlePhraseChange = this.handlePhraseChange.bind(this);
+        this.delayed = debounce(this.runSearchQuery, 300);
     }
 
     componentDidMount() {
@@ -38,8 +41,9 @@ class  StarWarsApp extends React.Component {
     handlePhraseChange(event) {
         this.setState({
             searchPhrase: event.target.value
-        }, this.runSearchQuery)
+        }, this.delayed)
     }
+
 
     render() {
         return <div className="d-flex flex-column align-items-center">

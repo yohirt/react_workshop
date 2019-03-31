@@ -11,12 +11,12 @@ export default function PlanetListItem({ planet }) {
     )
 }
 
-const { string, number, shape } = PropTypes;
+const { string, number, shape, oneOfType } = PropTypes;
 
 PlanetListItem.propTypes = {
     planet: shape({
         name: string,
         climate: string,
-        population: number
+        population: oneOfType([number, string])
     })
 };
