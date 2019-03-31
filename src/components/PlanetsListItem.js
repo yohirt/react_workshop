@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function PlanetListItem({ planet }) {
     return (
-        <li key={planet.name} className="d-flex justify-content-between">
+        <li key={planet.id} className="d-flex justify-content-between">
             <span>{planet.name} </span>
             <span>{planet.climate} </span>
             <span>{planet.population}</span>

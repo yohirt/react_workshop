@@ -9,7 +9,9 @@ export default function PlanetList(props) {
         <React.Fragment>
             <Loader isLoading={props.isLoading}/>
             <ol className="w-75">
-                {!isEmpty(props.planets) && props.planets.map(planet => <PlanetListItem planet={planet}/>)}
+                {!isEmpty(props.planets)
+                    ? props.planets.map(planet => <PlanetListItem planet={planet}/>)
+                    : <p>Nothing found</p>}
             </ol>
         </React.Fragment>
     )

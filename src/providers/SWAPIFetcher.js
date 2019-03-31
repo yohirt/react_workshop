@@ -1,4 +1,5 @@
 import axios from 'axios';
+import shortid from 'shortid';
 
 /**
  * Searches planets in SWAPI
@@ -22,6 +23,7 @@ export default async function searchPlanets(query) {
  */
 function transformPlanets(data) {
     return data.map(({ name, climate, population, gravity, orbital_period, rotation_period }) => ({
+        id: shortid.generate(),
         name,
         climate,
         population: parseInt(population) || population,
