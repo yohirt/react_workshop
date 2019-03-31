@@ -1,12 +1,14 @@
 import React from 'react';
 import searchPlanets from '../providers/SWAPIFetcher';
 import PlanetsList from './PlanetsList';
+import Search from './Search';
 
 class  StarWarsApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             searchLoading: false,
+            searchPhrase: 'a',
             planets: []
         }
     }
@@ -33,6 +35,7 @@ class  StarWarsApp extends React.Component {
     render() {
         return <div className="d-flex flex-column align-items-center">
             <h1>Star Wars Planets</h1>
+            <Search phrase={this.state.searchPhrase}/>
             <PlanetsList isLoading={this.state.searchLoading} planets={this.state.planets}/>
         </div>
     };
