@@ -11,16 +11,20 @@ class  StarWarsApp extends React.Component {
             searchPhrase: 'a',
             planets: []
         }
+        this.handlePhraseChange = this.handlePhraseChange.bind(this);
     }
 
-    async componentDidMount() {
+    componentDidMount() {
+        this.runSearchQuery();
+    }
 
+    async runSearchQuery() {
         this.setState({
             searchLoading: true
         });
 
         try {
-            const planets  = await searchPlanets('a');
+            const planets  = await searchPlanets(this.state.searchPhrase);
 
             this.setState({
                 searchLoading: false,
@@ -29,13 +33,18 @@ class  StarWarsApp extends React.Component {
         } catch (error) {
             console.warn(error);
         }
+    }
 
+    handlePhraseChange(event) {
+        this.setState({
+            searchPhrase: event.target.value
+        }, this.runSearchQuery)
     }
 
     render() {
         return <div className="d-flex flex-column align-items-center">
             <h1>Star Wars Planets</h1>
-            <Search phrase={this.state.searchPhrase}/>
+            <Search phrase={this.state.searchPhrase} onPhraseChange={this.handlePhraseChange}/>
             <PlanetsList isLoading={this.state.searchLoading} planets={this.state.planets}/>
         </div>
     };
